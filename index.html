@@ -4,22 +4,29 @@
     <meta charset="UTF-8">
     <title>TOBLOCKS</title>
     <style>
-        body { margin: 0; overflow: hidden; }
-        canvas { display: block; }
+        body { margin:0; overflow:hidden; font-family:sans-serif;}
+        canvas { display:block; }
         #skinButton {
             position: absolute;
-            top: 20px;
-            left: 20px;
+            top: 20px; left: 20px;
             padding: 10px 20px;
-            background: #fff;
-            border: 2px solid #000;
-            cursor: pointer;
+            background: #fff; border: 2px solid #000; cursor:pointer;
             font-weight: bold;
+        }
+        #ui {
+            position: absolute;
+            top: 20px; right: 20px;
+            color: #fff; font-size: 20px; background: rgba(0,0,0,0.5); padding: 10px;
         }
     </style>
 </head>
 <body>
     <button id="skinButton">Changer de skin</button>
+    <div id="ui">
+        Niveau: 1 <br>
+        Vie: 50/50 <br>
+        Pièces: 0
+    </div>
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="game.js"></script>
 </body>
