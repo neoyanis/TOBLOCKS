@@ -84,7 +84,44 @@ function createPowerCubes(){
     return cubes;
 }
 let powerCubes = createPowerCubes();
+// --- Pièces ---
+class Coin {
+    constructor(x,z){
+        this.mesh = new THREE.Mesh(
+            new THREE.CylinderGeometry(0.3,0.3,0.1,16),
+            new THREE.MeshStandardMaterial({color:0xFFD700})
+        );
+        this.mesh.position.set(x,0.1,z);
+        this.mesh.rotation.x=Math.PI/2;
+        scene.add(this.mesh);
+    }
+}
 
+let coins = [];
+for(let i=0;i<20;i++){
+    let x=Math.random()*80-40;
+    let z=Math.random()*80-40;
+    coins.push(new Coin(x,z));
+}
+
+// --- Ramassage pièces ---
+function checkCoinPickup(){
+    coins.forEach((c,index)=>{
+        const dx = player.position.x - c.mesh.position.x;
+        const dz = player.position.z - c.mesh.position.z;
+        const distance = Math.sqrt(dx*dx + dz*dz);
+        if(distance < 1){
+            playerCoins += 1;
+            scene.remove(c.mesh);
+            coins.splice(index,1);
+            // Acheter vie automatiquement tous les 5 coins
+            if(playerCoins % 5 === 0){
+                playerMaxHP += 10;
+                playerHP += 10; // boost immédiat
+            }
+        }
+    });
+}
 // --- NPC simples ---
 class NPC {
     constructor(level,x,z){
