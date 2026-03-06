@@ -2,13 +2,24 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <title>Prototype 3D Cube</title>
+    <title>TOBLOCKS</title>
     <style>
         body { margin: 0; overflow: hidden; }
         canvas { display: block; }
+        #skinButton {
+            position: absolute;
+            top: 20px;
+            left: 20px;
+            padding: 10px 20px;
+            background: #fff;
+            border: 2px solid #000;
+            cursor: pointer;
+            font-weight: bold;
+        }
     </style>
 </head>
 <body>
+    <button id="skinButton">Changer de skin</button>
     <script src="https://cdn.jsdelivr.net/npm/three@0.160.0/build/three.min.js"></script>
     <script src="game.js"></script>
 </body>
